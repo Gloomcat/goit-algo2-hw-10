@@ -5,6 +5,7 @@ from timeit import timeit
 
 import matplotlib.pyplot as plt
 
+
 def randomized_quick_sort(arr):
     if len(arr) < 2:
         return arr
@@ -18,6 +19,7 @@ def randomized_quick_sort(arr):
 
     return randomized_quick_sort(left) + middle + randomized_quick_sort(right)
 
+
 def deterministic_quick_sort(arr):
     if len(arr) < 2:
         return arr
@@ -30,6 +32,7 @@ def deterministic_quick_sort(arr):
     right = [x for x in arr if x > pivot]
 
     return deterministic_quick_sort(left) + middle + deterministic_quick_sort(right)
+
 
 if __name__ == "__main__":
     array_sizes = [10000, 50000, 100000, 500000]
@@ -51,8 +54,15 @@ if __name__ == "__main__":
         print()
 
     plt.figure(figsize=(8, 6))
-    plt.plot(array_sizes, randomized_times, label="Рандомізований QuickSort", color="blue")
-    plt.plot(array_sizes, deterministic_times, label="Детермінований QuickSort", color="orange")
+    plt.plot(
+        array_sizes, randomized_times, label="Рандомізований QuickSort", color="blue"
+    )
+    plt.plot(
+        array_sizes,
+        deterministic_times,
+        label="Детермінований QuickSort",
+        color="orange",
+    )
 
     plt.xlabel("Розмір масиву")
     plt.ylabel("Середній час виконання (секунди)")
